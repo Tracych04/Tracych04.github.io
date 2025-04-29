@@ -1,104 +1,377 @@
-h1, h2, h3, p, ol, ul {
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --pinkgradiant: linear-gradient(to right, rgb(185, 130, 203) , rgb(169, 39, 181),rgb(185, 130, 203));
+    --purplelight: rgb(184, 111, 252);
+    --purpledark: rgb(111, 59, 222);
+}
+
+/* ----------------RESETS------------*/ 
+
+p, ul, ol, h1, h2, h3, blockquote {
 	margin: 0;
 	padding: 0;
 }
 
-* { box-sizing:border-box; }
-
-img { max-width:100%; }
-
-/************* End CSS RESETS **************/
-
-body {
-	background:url(images/paper.png);
-	color: #424242;
-	font-family: 'Source Sans Pro', sans-serif;
-	padding: 30px 0;
+h1, h2, h3, h4 {
+	font-weight: normal;
 }
 
-#page {
-	max-width: 980px;
-	margin: auto;
+nav ul, nav ol {
+	list-style-type: none;
 }
 
-header {
-	border-bottom: 3px solid #424242;
-	padding-bottom: 20px;
+/* --------------------------------- */
+body{
+    background-color: black;
+   
+
+    font-size: 22px;
 }
 
-header, footer {
-	margin: 0 10px;
-}
-section {
-	padding:20px 0;
+main{
+    margin: auto;
 }
 
-footer {
-	border-top: 3px solid #424242;
-	padding-top: 20px;
+h1{
+    font-family: ITC Cheltenham Std;
+    font-size: 2em;
+    color:rgb(140, 177, 241);
+    text-align: center;
+    padding-top: 30px;
 }
 
-#about {
-	padding: 10px;
+#major{
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    text-align: center;
+    box-shadow: 0px 0px 6px ;
+    color: rgb(140, 177, 241);
+    padding: 10px;
+    margin: 60px auto 20px;
+    width: 50%;
 }
 
-#projects {
-	padding: 10px;
+#smaller{
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1.6em;
+    text-align: center;
+    box-shadow: 0px 0px 6px rgb(184, 111, 252);
+    color: rgb(184, 111, 252);
+    padding: 10px;
+    margin: 60px auto 20px;
+    width: 50%;
+}
+nav{
+   
+    margin: auto;
+   }
+
+   nav ul{
+    font-family: Arial, Helvetica, sans-serif; 
+
+   
+    list-style: none; 
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+ 
 }
 
-.alignleft {
-	float: left;
-	margin: 0 10px 5px 0;
+nav ul a:link{
+    color:rgb(130, 111, 252)
+}
+nav ul a:hover{
+    color:rgb(167, 156, 233)
+}
+nav ul li {
+    font-size: 0.8em;  
 }
 
-/************ typography *************/
-
-h1, h2, h3 {
-	font-family: 'Bitter', serif;
-	margin-bottom:.5em;
-}
-
-h1 {
-	font-size:150%;
-	text-transform:uppercase;
-}
-
-header h1 {
-	font-size:300%;
-	margin-bottom:.1em;
-}
-
-p {
-	line-height:1.5em;
-	margin-bottom:1em;
-}
-
-ul, ol {
-	margin-bottom:1em;
-	padding-left:1.2em;
-}
-
-li {
-	margin-bottom:.5em;
-}
-
-a {
-	text-decoration:none;
-	color:#045685;
-}
-
-a:hover {
-	text-decoration:underline;
-}
-
-@media only screen and (min-width: 600px) {
-	
-	main { display: flex;}
-	#about { flex: 2; }
-	#projects { flex: 1; }
-	
+a{
+    text-decoration: none;
 }
 
 
-	
+#majorprojects{
+    background-image: linear-gradient(to right, rgb(140, 177, 241) , rgb(89, 0, 255),rgb(140, 177, 241));
+    padding: 20px;
+    width:90%;
+    margin: 10px auto 20px;
+}
+
+#majorprojects div{
+    background:rgb(140, 177, 241);
+    margin-bottom: 4px;
+    padding: 20px;
+    padding-right: 30px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.537);
+
+}
+
+#smallerprojects{
+    background-image: var(--pinkgradiant);
+    max-width: 90%;
+    margin: auto;
+    padding: 50px;
+    
+    
+}
+
+
+
+/* entire container, keeps perspective */
+.flip-container{
+    border: 4px solid black;
+    width:100%;
+    min-height: 400px;
+    margin: 10px auto;
+    perspective: 1000px;
+    box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.576);
+}
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+    width: 100%;
+}
+
+.flip-container, .front, .back {
+	width: 100%;
+	height: 480px;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+    background-color: rgba(0, 0, 255, 0.118);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+   
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+  
+  
+}
+
+
+.front h3{
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: black;  
+    width:70%;
+    text-align: center;
+    padding-top: 60px;
+    margin: auto;
+}
+
+.back a{
+    text-decoration: none;
+    color: rgb(40, 20, 107);
+    font-size: 1.3em;
+    font-weight: 700;
+    padding-top: 20px;
+   
+}
+
+.back a:hover{
+    color: rgb(102, 33, 163); 
+    
+   
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+    padding: 120px 20px;
+    font-size: 1.2em;
+    text-align: center;
+
+}
+
+
+/* #smallerprojects{
+    background-image: linear-gradient(to right, rgb(185, 130, 203) , rgb(169, 39, 181),rgb(185, 130, 203));
+    width: 80%;
+    margin:0 auto;
+    padding: 20px;
+    color:black;
+    position: relative;
+} */
+
+
+
+/* 
+}
+
+#smallerprojects div{
+    background-color:rgb(140, 177, 241);
+    padding: 20px;
+    margin-bottom: 4px;
+    box-shadow: 2px 1px 1px 1px rgba(0, 0, 0, 0.585) 
+}
+ */
+
+/* ----------FOOTER-------------- */
+footer{
+    width:80%;
+    text-align: center;
+    margin:60px auto 10px;
+    
+}
+
+footer p{
+    color: rgb(184, 111, 252);
+}
+
+footer a:link{
+    color:rgb(111, 59, 222);
+}
+footer a:hover{
+    color:rgb(138, 90, 243)
+}
+
+
+
+ @media screen and (min-width: 600px){
+
+
+
+    nav div{
+
+        margin-top: 40px;
+        margin-right: 40px;
+        position: relative;
+        width: 50%;
+        
+    } 
+     nav div h1{
+        text-align: right;
+        font-size: 3em;
+     }
+
+     nav img{
+        position: absolute;
+        z-index: -1;
+        left:0;
+     }
+
+
+    #majorprojects{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 90%;
+    }
+
+    #majorprojects div{
+        width: calc(50% - 2px);
+        
+    }
+
+
+
+    #smallerprojects{
+        display: grid;
+        grid-auto-rows: minmax(150px, auto);
+        grid-gap:4px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+
+
+    nav{
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+
+    } 
+
+    #majorprojects{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 90%;
+    }
+
+    #majorprojects div{
+        width: calc(50% - 2px);
+        
+    }
+
+    #smallerprojects{
+        display: grid;
+        grid-auto-rows: minmax(150px, auto);
+        grid-gap:4px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+ 
+
+
+@media screen and (min-width:960px){
+    body{
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    nav div{
+
+        margin-top: 40px;
+        margin-right: 50px;
+        position: relative;
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        
+    } 
+     nav div h1{
+        text-align: right;
+        font-size: 3em;
+     }
+
+     nav img{
+        position: absolute;
+        z-index: -1;
+        left:50px;
+     }
+    nav div ul{
+        width:50%;
+        margin-left:200px;
+
+ }
+ 
+
+    #smallerprojects{
+        display: grid;
+        grid-auto-rows: minmax(150px, auto);
+        grid-gap:4px;
+        margin: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+   }
 
